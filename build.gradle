@@ -6,10 +6,25 @@ repositories {
 }
 
 apply plugin: 'java'
+<<<<<<< HEAD
 apply plugin: 'checkstyle'
+=======
+>>>>>>> d24fa70... TRACK-2: Replaced gradle application plugin with jars' manifest declarations.
 
 
+<<<<<<< HEAD
 sourceCompatibility = 1.8
+=======
+jar {
+    destinationDir = file("$rootDir/out/jarred")
+    manifest {
+        attributes \
+                'Implementation-Title': 'CSC NSK Java 2017 Task00',
+                'Implementation-Version': version,
+                'Main-Class': 'org.csc.nsk.java2017.task00.Main'
+    }
+}
+>>>>>>> d24fa70... TRACK-2: Replaced gradle application plugin with jars' manifest declarations.
 
 dependencies {
     // Low-level toolbox
