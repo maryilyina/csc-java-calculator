@@ -10,6 +10,8 @@ allprojects {
 
     apply plugin: 'checkstyle'
     tasks.withType(Checkstyle) {
+        configFile = file("../config/checkstyle/checkstyle.xml")
+        showViolations = true
         reports {
             xml.enabled false
             html.enabled true
