@@ -6,8 +6,6 @@
 
 package org.csc.nsk.java2017.task01;
 
-
-import lombok.val;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -18,10 +16,10 @@ public final class StackTests {
 
     @Test
     public void testStackSize() {
-        val stack = newIntegersStack();
+        final Stack<Integer> stack = newIntegersStack();
         Assert.assertTrue(stack.size() == 0);
 
-        val value = 0;
+        final Integer value = 0;
 
         stack.push(value);
         Assert.assertTrue(stack.size() == 1);
@@ -32,11 +30,11 @@ public final class StackTests {
 
     @Test
     public void testPushPop() {
-        val stack = newIntegersStack();
-        val value = 0;
+        final Stack<Integer> stack = newIntegersStack();
+        final Integer value = 0;
 
         stack.push(value);
-        val poppedValue = stack.pop();
-        Assert.assertTrue(poppedValue == value);
+        final Integer poppedValue = stack.pop();
+        Assert.assertEquals(poppedValue, value);
     }
 }
