@@ -1,38 +1,25 @@
-group 'org.csc.java2017'
-version '1.0'
+allprojects {
+    repositories {
+        mavenCentral()
+    }
 
-repositories {
-    mavenCentral()
-}
+    group 'org.csc.java2017'
 
-apply plugin: 'java'
-<<<<<<< HEAD
-apply plugin: 'checkstyle'
-=======
->>>>>>> d24fa70... TRACK-2: Replaced gradle application plugin with jars' manifest declarations.
+    apply plugin: 'java'
+    sourceCompatibility = JavaVersion.VERSION_1_8
 
-
-<<<<<<< HEAD
-sourceCompatibility = 1.8
-=======
-jar {
-    manifest {
-        attributes \
-                'Implementation-Title': 'CSC Nsk Java 2017 Task01 - Containers',
-                'Implementation-Version': version,
-                'Main-Class': 'org.csc.nsk.java2017.task01.Main'
+    apply plugin: 'checkstyle'
+    tasks.withType(Checkstyle) {
+        reports {
+            xml.enabled false
+            html.enabled true
+        }
     }
 }
->>>>>>> d24fa70... TRACK-2: Replaced gradle application plugin with jars' manifest declarations.
 
-dependencies {
-    testCompile 'junit:junit:4.12'
-    testCompile 'org.projectlombok:lombok:1.16.10'
-}
-
-tasks.withType(Checkstyle) {
-    reports {
-        xml.enabled false
-        html.enabled true
+subprojects {
+    dependencies {
+        testCompile "junit:junit:4.12"
+        testCompile "org.projectlombok:lombok:1.16.10"
     }
 }

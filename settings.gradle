@@ -1,2 +1,3 @@
-rootProject.name = 'task01'
+rootProject.name = 'Csc-Nsk-Java2017-Tasks'
 
+include ':task-01-containers'

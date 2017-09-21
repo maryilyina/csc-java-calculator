@@ -1,0 +1,10 @@
+version '1.0'
+
+jar {
+    manifest {
+        attributes \
+                'Implementation-Title': 'CSC Nsk Java 2017 Task01 - Containers',
+                'Implementation-Version': version,
+                'Main-Class': 'org.csc.nsk.java2017.task01.Main'
+    }
+}
