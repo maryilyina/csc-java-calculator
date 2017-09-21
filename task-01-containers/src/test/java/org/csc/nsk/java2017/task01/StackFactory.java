@@ -12,4 +12,7 @@ final class StackFactory {
     static <T> Stack<T> newStack() {
         return new DummyStack<>();
     }
+
+    private StackFactory() {
+    }
 }

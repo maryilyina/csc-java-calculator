@@ -39,4 +39,7 @@ final class MultisetFactory {
             throw new RuntimeException("Failed to instantiate multiset class.'", t);
         }
     }
+
+    private MultisetFactory() {
+    }
 }
