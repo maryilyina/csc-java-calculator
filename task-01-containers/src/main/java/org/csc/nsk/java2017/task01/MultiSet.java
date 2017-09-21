@@ -9,9 +9,9 @@ import java.util.Collection;
 import java.util.Iterator;
 
 /**
- * MultiSet is an unordered collection that may contain duplicate elements.
+ * Multiset is an unordered collection that may contain duplicate elements.
  * It refines some of the operations inherited from {@link Collection}
- * and adds several new operations aware of MultiSet's ability to contain multiple
+ * and adds several new operations aware of Multiset's ability to contain multiple
  * occurrences of an element.
  *
  * Implementations must provide default constructor (without arguments)
@@ -19,7 +19,7 @@ import java.util.Iterator;
  *
  * @param <E> the type of elements in this multiset
  */
-public interface MultiSet<E> extends Collection<E> {
+public interface Multiset<E> extends Collection<E> {
 
     /**
      * Returns the number of elements in this multiset, including all duplicates.
