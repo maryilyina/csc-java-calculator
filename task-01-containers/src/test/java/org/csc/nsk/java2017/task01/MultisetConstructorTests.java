@@ -7,12 +7,17 @@
 package org.csc.nsk.java2017.task01;
 
 import org.junit.Assert;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.Timeout;
 
 import java.lang.reflect.Constructor;
 import java.util.Collection;
 
 public final class MultisetConstructorTests {
+    @Rule
+    public final Timeout globalTimeout = TestUtils.makeDefaultTimeoutRule();
+
     @Test
     public void testHasNoArgsConstructor() {
         final Class<? extends Multiset> clazz = MultisetFactory.getMultisetClass();
@@ -39,69 +44,4 @@ public final class MultisetConstructorTests {
         }
     }
 }
-
-/*
-
-@Test(timeOut = 1000L, sequential = true)
-public class MultiSetTest {
-
-    private Class<?> multiSetClass;
-
-    public MultiSetTest() {
-    }
-
-    public MultiSetTest(Class<?> multiSetClass) {
-        if (multiSetClass == null) {
-            throw new IllegalArgumentException("multiSetClass");
-        }
-
-        this.multiSetClass = multiSetClass;
-    }
-
-    */
-/*
-     * This is test example
-     *//*
-
-    public void newMultiSetMustBeEmpty() throws Exception {
-        assertThat(newMultiSet()).isEmpty();
-        assertThat(newMultiSet()).hasSize(0);
-    }
-
-
-    */
-/*
-     * This is constructor without parameters for your MultiSet implementation.
-     *//*
-
-    private <E> MultiSet<E> newMultiSet() throws Exception {
-        Constructor<?> constructor = getNoArgConstructor();
-        constructor.setAccessible(true);
-        return (MultiSet<E>) constructor.newInstance();
-    }
-
-    */
-/*
-     * This is constructor with Collection parameter for your MultiSet implementation.
-     *//*
-
-    private <E> MultiSet<E> newMultiSet(Collection c) throws Exception {
-        Constructor<?> constructor = getCollectionConstructor();
-        constructor.setAccessible(true);
-        return (MultiSet<E>) constructor.newInstance(c);
-    }
-
-    private Constructor<?> getNoArgConstructor() throws Exception {
-        return multiSetClass.getDeclaredConstructor();
-    }
-
-    private Constructor<?> getCollectionConstructor() throws Exception {
-        return multiSetClass.getDeclaredConstructor(Collection.class);
-    }
-
-    private static Integer randomInteger() {
-        return (int) (Math.random() * Integer.MAX_VALUE);
-    }
-}
-*/
 

@@ -6,13 +6,20 @@
 
 package org.csc.nsk.java2017.task01;
 
+import org.junit.rules.Timeout;
+
 import java.util.Random;
 
 final class TestUtils {
-    private static final long DEFAULT_SEED = 456808;
+    private static final long DEFAULT_RANDOM_SEED = 456808;
+    private static final long DEFAULT_TIMEOUT_MILLIS = 1000;
 
     static Random makeDefaultStableRandom() {
-        return new Random(DEFAULT_SEED);
+        return new Random(DEFAULT_RANDOM_SEED);
+    }
+
+    static Timeout makeDefaultTimeoutRule() {
+        return Timeout.millis(DEFAULT_TIMEOUT_MILLIS);
     }
 
     private TestUtils() {

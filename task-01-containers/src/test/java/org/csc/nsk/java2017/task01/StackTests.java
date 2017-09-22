@@ -7,11 +7,16 @@
 package org.csc.nsk.java2017.task01;
 
 import org.junit.Assert;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.Timeout;
 
 import java.util.Random;
 
 public final class StackTests {
+    @Rule
+    public final Timeout globalTimeout = TestUtils.makeDefaultTimeoutRule();
+
     private final Random random = TestUtils.makeDefaultStableRandom();
 
     @Test

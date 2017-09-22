@@ -7,9 +7,14 @@
 package org.csc.nsk.java2017.task01;
 
 import org.junit.Assert;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.Timeout;
 
 public final class MultisetBasicTests {
+    @Rule
+    public final Timeout globalTimeout = TestUtils.makeDefaultTimeoutRule();
+
     @Test
     public void testNewDefaultMultisetIsEmpty() {
         final Multiset<Object> multiset = MultisetFactory.makeDefaultMultiset();
