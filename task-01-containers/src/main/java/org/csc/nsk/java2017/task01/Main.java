@@ -17,5 +17,6 @@ public final class Main {
 
     private void run() {
         System.out.println("Hello world.");
+        System.out.println("One more time.");
     }
 }
