@@ -6,7 +6,7 @@
 
 package org.csc.nsk.java2017.task01;
 
-import org.csc.nsk.java2017.task01.impl.frikadelki.DummyMultiset;
+import org.csc.nsk.java2017.impl.frikadelki.task01.DummyMultiset;
 
 import java.lang.reflect.Constructor;
 import java.util.Collection;

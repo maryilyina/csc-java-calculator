@@ -4,7 +4,7 @@
  * Created by frikadelki on 2017/9/21
  */
 
-package org.csc.nsk.java2017.task01.impl.frikadelki;
+package org.csc.nsk.java2017.impl.frikadelki.task01;
 
 import org.csc.nsk.java2017.task01.Stack;
 

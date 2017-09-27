@@ -6,7 +6,7 @@
 
 package org.csc.nsk.java2017.task01;
 
-import org.csc.nsk.java2017.task01.impl.frikadelki.DummyStack;
+import org.csc.nsk.java2017.impl.frikadelki.task01.DummyStack;
 
 final class StackFactory {
     static <T> Stack<T> newStack() {
