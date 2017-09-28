@@ -4,22 +4,25 @@ allprojects {
     }
 
     group 'org.csc.java2017'
+}
 
+subprojects {
     apply plugin: 'java'
     sourceCompatibility = JavaVersion.VERSION_1_8
+    test {
+        testLogging.showStandardStreams = true
+    }
 
     apply plugin: 'checkstyle'
     tasks.withType(Checkstyle) {
         configFile = file("../config/checkstyle/checkstyle.xml")
         showViolations = true
         reports {
-            xml.enabled false
-            html.enabled true
+            xml.enabled = false
+            html.enabled = true
         }
     }
-}
 
-subprojects {
     dependencies {
         testCompile "junit:junit:4.12"
         testCompile "org.projectlombok:lombok:1.16.10"
