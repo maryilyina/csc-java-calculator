@@ -15,11 +15,7 @@ public final class DummyStack<T> implements Stack<T> {
 
     @Override
     public int size() {
-        if (value == null) {
-            return 0;
-        } else {
-            return 1;
-        }
+        return (value != null) ? 1 : 0;
     }
 
     @Override
