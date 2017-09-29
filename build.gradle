@@ -15,7 +15,7 @@ subprojects {
 
     apply plugin: 'checkstyle'
     tasks.withType(Checkstyle) {
-        configFile = file("../config/checkstyle/checkstyle.xml")
+        configFile = file('../config/checkstyle/checkstyle.xml')
         showViolations = true
         reports {
             xml.enabled = false
@@ -24,7 +24,7 @@ subprojects {
     }
 
     dependencies {
-        testCompile "junit:junit:4.12"
-        testCompile "org.projectlombok:lombok:1.16.10"
+        testCompile 'junit:junit:4.12'
+        testCompile 'org.projectlombok:lombok:1.16.10'
     }
 }
