@@ -17,14 +17,14 @@ public final class StackTests {
     @Rule
     public final Timeout globalTimeout = TestUtils.makeDefaultTimeoutRule();
 
-    private final Random random = TestUtils.makeDefaultStableRandom();
+    private final TestUtils.Random random = TestUtils.makeDefaultStableRandom();
 
     @Test
     public void testStackSize() {
         final Stack<Integer> stack = newIntegersStack();
         Assert.assertTrue(stack.size() == 0);
 
-        final Integer   value = random.nextInt();
+        final Integer value = random.nextInteger();
 
         stack.push(value);
         Assert.assertTrue(stack.size() == 1);
@@ -36,7 +36,7 @@ public final class StackTests {
     @Test
     public void testPushPop() {
         final Stack<Integer> stack = newIntegersStack();
-        final Integer value = random.nextInt();
+        final Integer value = random.nextInteger();
 
         stack.push(value);
         final Integer poppedValue = stack.pop();
