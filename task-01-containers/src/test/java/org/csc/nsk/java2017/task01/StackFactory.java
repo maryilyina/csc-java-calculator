@@ -10,6 +10,7 @@ import org.csc.nsk.java2017.impl.frikadelki.task01.DummyStack;
 
 final class StackFactory {
     static <T> Stack<T> newStack() {
+        // TODO (task01): replace this with your stack instance creation
         return new DummyStack<>();
     }
 

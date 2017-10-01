@@ -13,12 +13,13 @@ import java.util.Collection;
 
 final class MultisetFactory {
     static Class<? extends Multiset> getMultisetClass() {
+        // TODO (task01): replace this with your multiset class
         return DummyMultiset.class;
     }
 
     static <TElement> Multiset<TElement> makeDefaultMultiset() {
         try {
-            final Constructor<? extends Multiset> constructor = getMultisetClass().getConstructor();
+            final Constructor<? extends Multiset> constructor = getMultisetClass().getDeclaredConstructor();
             constructor.setAccessible(true);
             final Multiset multiset = constructor.newInstance();
             //noinspection unchecked
@@ -30,7 +31,7 @@ final class MultisetFactory {
 
     static <TElement> Multiset<TElement> makeMultisetWithCollection(final Collection<? extends TElement> sourceCollection) {
         try {
-            final Constructor<? extends Multiset> constructor = getMultisetClass().getConstructor(Collection.class);
+            final Constructor<? extends Multiset> constructor = getMultisetClass().getDeclaredConstructor(Collection.class);
             constructor.setAccessible(true);
             final Multiset multiset = constructor.newInstance(sourceCollection);
             //noinspection unchecked

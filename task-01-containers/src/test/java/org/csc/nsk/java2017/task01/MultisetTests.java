@@ -14,7 +14,7 @@ import org.junit.rules.Timeout;
 import java.lang.reflect.Constructor;
 import java.util.Collection;
 
-public final class MultisetConstructorTests {
+public final class MultisetTests {
     @Rule
     public final Timeout globalTimeout = TestUtils.makeDefaultTimeoutRule();
 
@@ -32,7 +32,7 @@ public final class MultisetConstructorTests {
     }
 
     @Test
-    public void testCollectionConstructor() {
+    public void testHasCollectionConstructor() {
         final Class<? extends Multiset> clazz = MultisetFactory.getMultisetClass();
         try {
             final Constructor<? extends Multiset> constructor = clazz.getDeclaredConstructor(Collection.class);
@@ -43,5 +43,13 @@ public final class MultisetConstructorTests {
             Assert.fail("No constructor with collection.");
         }
     }
-}
 
+    @Test
+    public void testNewDefaultMultisetIsEmpty() {
+        final Multiset<Object> multiset = MultisetFactory.makeDefaultMultiset();
+        Assert.assertTrue(multiset.isEmpty());
+        Assert.assertTrue(multiset.size() == 0);
+        Assert.assertTrue(!multiset.contains(0));
+        Assert.assertTrue(!multiset.iterator().hasNext());
+    }
+}
