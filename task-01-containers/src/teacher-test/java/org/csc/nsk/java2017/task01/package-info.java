@@ -5,6 +5,6 @@
  */
 
 /**
- * Root package for container task - teachers' unt tests.
+ * Root package for container task - teachers' unit tests.
  */
 package org.csc.nsk.java2017.task01;
