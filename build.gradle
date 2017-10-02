@@ -9,6 +9,13 @@ allprojects {
 subprojects {
     apply plugin: 'java'
     sourceCompatibility = JavaVersion.VERSION_1_8
+    sourceSets {
+        test {
+            java {
+                srcDirs 'src/teacher-test/java'
+            }
+        }
+    }
     test {
         testLogging.showStandardStreams = true
     }
