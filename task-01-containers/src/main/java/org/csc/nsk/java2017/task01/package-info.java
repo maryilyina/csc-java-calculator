@@ -5,6 +5,6 @@
  */
 
 /**
- * Root package for container task.
+ * Root package for containers task.
  */
 package org.csc.nsk.java2017.task01;

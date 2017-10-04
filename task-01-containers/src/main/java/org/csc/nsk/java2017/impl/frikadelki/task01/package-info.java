@@ -5,6 +5,6 @@
  */
 
 /**
- * Containers by frikadelki.
+ * Containers impl by frikadelki.
  */
 package org.csc.nsk.java2017.impl.frikadelki.task01;

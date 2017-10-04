@@ -47,6 +47,10 @@
 
     <property name="fileExtensions" value="java, properties, xml"/>
 
+    <module name="SuppressionFilter">
+        <property name="file" value="${config-dir}/suppressions.xml"/>
+    </module>
+
     <!-- Checks properties file for a duplicated properties. -->
     <!-- See http://checkstyle.sourceforge.net/config_misc.html#UniqueProperties -->
     <module name="UniqueProperties"/>

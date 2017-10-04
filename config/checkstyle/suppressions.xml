@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+  ~ Task 01 - Containers
+  ~ CSC Nsk Java 2017
+  ~ Created by frikadelki on 2017/10/5
+  -->
+
+<!DOCTYPE suppressions PUBLIC
+        "-//Puppy Crawl//DTD Suppressions 1.1//EN"
+        "http://www.puppycrawl.com/dtds/suppressions_1_1.dtd">
+
+<suppressions>
+    <suppress checks="JavadocPackage" files="src/test/.*"/>
+    <suppress checks="JavadocPackage" files="src/teacher-test/.*"/>
+</suppressions>
