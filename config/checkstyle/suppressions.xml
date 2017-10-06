@@ -12,4 +12,6 @@
 <suppressions>
     <suppress checks="JavadocPackage" files="src/test/.*"/>
     <suppress checks="JavadocPackage" files="src/teacher-test/.*"/>
+    <suppress checks="MagicNumber" files="src/test/.*"/>
+    <suppress checks="MagicNumber" files="src/teacher-test/.*"/>
 </suppressions>
