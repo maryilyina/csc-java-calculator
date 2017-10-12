@@ -1,3 +1,8 @@
+/*
+ * CSC Nsk Java 2017
+ * Created by frikadelki on 2017/09/xx
+ */
+
 allprojects {
     repositories {
         mavenCentral()

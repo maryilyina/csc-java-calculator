@@ -1,3 +1,9 @@
+/*
+ * Task 01 - Containers
+ * CSC Nsk Java 2017
+ * Created by frikadelki on 2017/09/xx
+ */
+
 version '1.0'
 
 jar {

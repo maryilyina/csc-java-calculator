@@ -1,3 +1,8 @@
+/*
+ * CSC Nsk Java 2017
+ * Created by frikadelki on 2017/09/xx
+ */
+
 rootProject.name = 'Csc-Nsk-Java2017-Tasks'
 
 include ':task-01-containers'
