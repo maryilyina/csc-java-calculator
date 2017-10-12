@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="task02" pattern="file[group:task-02-calculator]:*//*" />
+</component>
