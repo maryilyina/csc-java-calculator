@@ -1,0 +1,20 @@
+/*
+ * Test Utils Library
+ * CSC Nsk Java 2017
+ * Created by frikadelki on 2017/10/11
+ */
+
+version '1.0'
+
+jar {
+    manifest {
+        attributes \
+                'Implementation-Title': 'CSC Nsk Java 2017 Test Utils Library',
+                'Implementation-Version': version
+    }
+}
+
+dependencies {
+    compile 'junit:junit:4.12'
+    compile 'org.projectlombok:lombok:1.16.10'
+}

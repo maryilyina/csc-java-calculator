@@ -5,4 +5,6 @@
 
 rootProject.name = 'Csc-Nsk-Java2017-Tasks'
 
+include ':lib-test-utils'
+include ':lib-utils'
 include ':task-01-containers'

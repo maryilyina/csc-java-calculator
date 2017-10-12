@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="lib-test-utils" pattern="file[group:lib-test-utils]:*//*" />
+</component>

@@ -6,7 +6,7 @@
 
 package org.csc.nsk.java2017.task01;
 
-import org.csc.nsk.java2017.TestUtils;
+import org.csc.nsk.java2017.tutils.TestUtils;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;

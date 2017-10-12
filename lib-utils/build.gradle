@@ -1,0 +1,19 @@
+/*
+ * Utils Library
+ * CSC Nsk Java 2017
+ * Created by frikadelki on 2017/10/11
+ */
+
+version '1.0'
+
+jar {
+    manifest {
+        attributes \
+                'Implementation-Title': 'CSC Nsk Java 2017 Utils Library',
+                'Implementation-Version': version
+    }
+}
+
+dependencies {
+    compile 'org.projectlombok:lombok:1.16.10'
+}

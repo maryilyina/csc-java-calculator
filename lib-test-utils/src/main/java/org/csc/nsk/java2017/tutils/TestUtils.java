@@ -1,10 +1,10 @@
 /*
- * Task 01 - Containers
+ * Test Utilities Library
  * CSC Nsk Java 2017
  * Created by frikadelki on 2017/9/22
  */
 
-package org.csc.nsk.java2017;
+package org.csc.nsk.java2017.tutils;
 
 import org.junit.rules.Timeout;
 

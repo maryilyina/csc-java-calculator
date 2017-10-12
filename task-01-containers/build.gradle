@@ -14,3 +14,10 @@ jar {
                 'Main-Class': 'org.csc.nsk.java2017.task01.Main'
     }
 }
+
+dependencies {
+    compile project (path: ":lib-utils")
+
+    testCompile project (path: ":lib-utils")
+    testCompile project (path: ":lib-test-utils")
+}
