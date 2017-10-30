@@ -151,7 +151,10 @@
         <module name="GenericWhitespace"/>
         <module name="MethodParamPad"/>
         <module name="NoWhitespaceAfter"/>
-        <module name="NoWhitespaceBefore"/>
+        <module name="NoWhitespaceBefore">
+            <property name="tokens" value="COMMA, SEMI, POST_INC, POST_DEC, DOT"/>
+            <property name="allowLineBreaks" value="true"/>
+        </module>
         <module name="OperatorWrap"/>
         <module name="ParenPad"/>
         <module name="TypecastParenPad"/>
