@@ -11,6 +11,17 @@ allprojects {
     group 'org.csc.java2017'
 }
 
+
+ext.libsVersions = [
+    lombok  : '1.16.12',
+
+    junit   : '4.12',
+]
+ext.libs = [
+    lombok  : "org.projectlombok:lombok:${libsVersions.lombok}",
+    junit   : "junit:junit:${libsVersions.junit}"
+]
+
 subprojects {
     apply plugin: 'java'
     sourceCompatibility = JavaVersion.VERSION_1_8
@@ -38,7 +49,7 @@ subprojects {
     }
 
     dependencies {
-        testCompile 'junit:junit:4.12'
-        testCompile 'org.projectlombok:lombok:1.16.10'
+        testCompile libs.junit
+        testCompile libs.lombok
     }
 }
