@@ -1,0 +1,22 @@
+/*
+ * Task 03 - PubSub
+ * CSC Nsk Java 2017
+ * Created by frikadelki on 2017/10/11
+ */
+
+version '1.0'
+
+jar {
+    manifest {
+        attributes \
+                'Implementation-Title': 'CSC Nsk Java 2017 Task03 - PubSub',
+                'Implementation-Version': version
+    }
+}
+
+dependencies {
+    compile project (path: ':lib-utils')
+    compile libs.lombok
+
+    testCompile project (path: ':lib-test-utils')
+}

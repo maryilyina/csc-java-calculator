@@ -11,10 +11,8 @@ allprojects {
     group 'org.csc.java2017'
 }
 
-
 ext.libsVersions = [
     lombok  : '1.16.12',
-
     junit   : '4.12',
 ]
 ext.libs = [

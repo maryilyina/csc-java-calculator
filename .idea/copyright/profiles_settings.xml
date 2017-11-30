@@ -5,6 +5,7 @@
       <element module="lib-utils" copyright="csc_java2017_libutils" />
       <element module="task01" copyright="csc_java2017_task01" />
       <element module="task02" copyright="csc_java2017_task02" />
+      <element module="task03" copyright="csc_java2017_task03" />
     </module2copyright>
   </settings>
 </component>
