@@ -10,8 +10,7 @@ jar {
     manifest {
         attributes \
                 'Implementation-Title': 'CSC Nsk Java 2017 Task02 - Calculator',
-                'Implementation-Version': version,
-                'Main-Class': 'org.csc.nsk.java2017.task02.Main'
+                'Implementation-Version': version
     }
 }
 
