@@ -15,6 +15,7 @@ public final class CalculatorTests {
     public void testOnePlusOne() {
         final Calculator calculator = CalculatorFactory.makeCalculator();
         Assert.assertEquals("One plus one should equal two.",
-                calculator.calculate("1 + 1"), 2, MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
+                2, calculator.calculate("1 1 +"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
+        Assert.assertEquals(-1, calculator.calculate("4 5 -"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
     }
 }
