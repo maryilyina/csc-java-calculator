@@ -13,6 +13,6 @@ public class MultOperator extends BinaryOperator {
 
     @Override
     public double eval(Expression left, Expression right) {
-        return left.eval() - right.eval();
+        return left.eval() * right.eval();
     }
 }

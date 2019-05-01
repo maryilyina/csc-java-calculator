@@ -7,26 +7,31 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class OperatorsLoader {
+    private static int priority = 0;
     private static Map<String, Operator> registeredOperators = new HashMap<>();
+    private static Map<String, Integer>  operatorPriorities  = new HashMap<>();
 
-    public static void registerOperator(Operator operator) {
-        registeredOperators.put(operator.keyword(), operator);
+    public static void registerOperators(Operator ...operators) {
+        for (Operator operator : operators) {
+            registeredOperators.put(operator.keyword(), operator);
+            operatorPriorities.put(operator.keyword(), priority);
+        }
+        priority++;
+    }
+
+    public static Integer maxPriority() {
+        return priority - 1;
     }
 
     static {
-        // Unary operators
-        registerOperator(new AbsOperator());
-        registerOperator(new UnaryMinusOperator());
-        registerOperator(new SinOperator());
-        registerOperator(new CosOperator());
-        registerOperator(new SqrtOperator());
-
-        // Binary operators
-        registerOperator(new AdditionOperator());
-        registerOperator(new SubstractionOperator());
-        registerOperator(new MultOperator());
-        registerOperator(new DivisionOperator());
-        registerOperator(new PowerOperator());
+        // priority 0
+        registerOperators(new UnaryMinusOperator());
+        // priority 1
+        registerOperators(new PowerOperator(), new AbsOperator(), new SinOperator(), new CosOperator(), new SqrtOperator());
+        // priority 2
+        registerOperators(new MultOperator(), new DivisionOperator());
+        // priority 3
+        registerOperators(new AdditionOperator(), new SubstractionOperator());
     }
 
     public static boolean contains(String operator) {
@@ -35,5 +40,9 @@ public class OperatorsLoader {
 
     public static Operator getOperator(String operator) {
         return registeredOperators.get(operator);
+    }
+
+    public static Integer getOperatorPriority(String operator) {
+        return operatorPriorities.get(operator);
     }
 }

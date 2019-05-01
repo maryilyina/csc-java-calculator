@@ -12,8 +12,8 @@ public abstract class BinaryOperator extends Operator {
     @Override
     public Expression apply(List<Expression> expressions) {
         if (expressions.size() == 2)
-            return new BinaryExpression(this, expressions.get(1), expressions.get(0));
-        throw new BadSyntaxException("Binary operator $keyword expected two arguments.\n" +
+            return new BinaryExpression(this, expressions.get(0), expressions.get(1));
+        throw new BadSyntaxException("Binary operator " + keyword() + " expected two arguments.\n" +
                 "Note: Unary operator should be written afterwards and as '--'.");
     }
 
@@ -21,6 +21,6 @@ public abstract class BinaryOperator extends Operator {
     double eval(List<Expression> expressions) {
         if (expressions.size() == 2)
             return eval(expressions.get(1), expressions.get(0));
-        throw new BadSyntaxException("Binary operator $keyword expected two arguments.");
+        throw new BadSyntaxException("Binary operator " + keyword() + "  expected two arguments.");
     }
 }
