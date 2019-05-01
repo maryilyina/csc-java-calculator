@@ -18,6 +18,7 @@ public final class CalculatorTests {
         Assert.assertEquals(2, calculator.calculate("1 + 1"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
         Assert.assertEquals(2, calculator.calculate("1+1"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
         Assert.assertEquals(2, calculator.calculate("1.0+1"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
+        Assert.assertEquals(1.11e-11, calculator.calculate("1.11e-11"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
     }
 
     @Test
@@ -63,12 +64,18 @@ public final class CalculatorTests {
     }
 
     @Test(expected = CalculationException.class)
-    public void InfinityCalculation(){
+    public void InfinityCalculationTest(){
         calculator.calculate(" 5 / 0");
     }
 
     @Test(expected = CalculationException.class)
-    public void NanCalculation(){
+    public void NanCalculationTest(){
         calculator.calculate(" 0.0 / 0.0");
+    }
+
+    @Test
+    public void CapitalisationTest(){
+        Assert.assertEquals(Math.cos(24), calculator.calculate("Cos 24"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
+        Assert.assertEquals(Math.cos(24), calculator.calculate("COS 24"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
     }
 }

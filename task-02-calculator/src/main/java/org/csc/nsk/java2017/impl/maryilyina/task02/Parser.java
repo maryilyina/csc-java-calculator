@@ -36,10 +36,10 @@ public class Parser {
     }
 
     public Expression parseExpression(String input) {
-        return parseExpressionWithoutSpaces(input.replaceAll("\\s+", ""));
+        return parseClearExpression(input.replaceAll("\\s+", "").toLowerCase());
     }
 
-    public Expression parseExpressionWithoutSpaces(String input) {
+    public Expression parseClearExpression(String input) {
         input = clearEnclosingParentheses(input);
 
         if (isNumber(input)) {
@@ -93,9 +93,9 @@ public class Parser {
                         if (operatorName.equals("-") && curPos == 1) continue;
 
                         // parse expression going before the operator
-                        Expression leftExpr = parseExpression(input.substring(0, start));
+                        Expression leftExpr = parseClearExpression(input.substring(0, start));
                         // parse expression going after the operator
-                        Expression rightExpr = parseExpression(input.substring(curPos));
+                        Expression rightExpr = parseClearExpression(input.substring(curPos));
 
                         ArrayList<Expression> args = new ArrayList<>();
                         if (leftExpr != null)  args.add(leftExpr);
