@@ -6,12 +6,11 @@
 
 package org.csc.nsk.java2017.task02;
 
-import org.csc.nsk.java2017.impl.frikadelki.task02.DummyCalculator;
+import org.csc.nsk.java2017.impl.maryilyina.task02.MathCalculator;
 
 final class CalculatorFactory {
     static Calculator makeCalculator() {
-        // TODO (task02): replace this with your calculator instance creation
-        return new DummyCalculator();
+        return new MathCalculator();
     }
 
     private CalculatorFactory() {

@@ -7,4 +7,9 @@
 package org.csc.nsk.java2017.task02;
 
 public final class CalculationException extends RuntimeException {
+
+    public CalculationException(final String message) {
+        super(message);
+    }
+
 }
