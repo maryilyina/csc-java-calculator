@@ -36,7 +36,9 @@ public class Parser {
     }
 
     public Expression parseExpression(String input) {
-        return parseClearExpression(input.replaceAll("\\s+", "").toLowerCase());
+        String cleared = input.replaceAll("\\s+", "").toLowerCase();
+        if (cleared.equals("")) throw new BadSyntaxException("Empty input");
+        return parseClearExpression(cleared);
     }
 
     public Expression parseClearExpression(String input) {
@@ -47,8 +49,8 @@ public class Parser {
             return new LiteralExpression(d);
         }
 
-        int curPriority = OperatorsLoader.maxPriority();
-        // go from highest priority of operator to lowest
+        int curPriority = OperatorsLoader.minPriority();
+        // go from lowest priority of operator to top to parse correctly
         while (curPriority >= 0) {
             int curPos = 0;
             int parenthesesCount = 0;
@@ -70,43 +72,47 @@ public class Parser {
                         curPos++;
                 }
                 else {
-                    int start = curPos;
+                    int operatorStart = curPos;
                     // read while it is operator name and no other symbol
                     while (curPos < input.length() && !haveReadNumber(input, curPos, curPos + 1) &&
                             input.charAt(curPos) != '(' && input.charAt(curPos) != ')' &&
-                            !OperatorsLoader.contains(input.substring(start, curPos)))
+                            !OperatorsLoader.contains(input.substring(operatorStart, curPos)))
                         curPos++;
+                    int operatorEnd = curPos;
 
-                    if (curPos > start) {
-                        String operatorName = input.substring(start, curPos);
-                        if (!OperatorsLoader.contains(operatorName))
-                            throw new BadSyntaxException("Not supported operator " + operatorName);
+                    String operatorName = input.substring(operatorStart, operatorEnd);
 
-                        // skip if it is not the current priority
-                        // or if expression is inside the parentheses
-                        if (OperatorsLoader.getOperatorPriority(operatorName) != curPriority
-                                || parenthesesCount != 0) continue;
+                    // skip if unary minus
+                    // or if it is decimal mark '.'
+                    // or if it is exponential form 'e-'
+                    if (operatorName.equals("-") && operatorEnd == 1 ||
+                            operatorName.equals(".") ||
+                            operatorName.equals("e-"))
+                        continue;
 
-                        Operator operator = OperatorsLoader.getOperator(operatorName);
+                    if (!OperatorsLoader.contains(operatorName))
+                        throw new BadSyntaxException("Not supported operator " + operatorName);
 
-                        // skip if unary minus
-                        if (operatorName.equals("-") && curPos == 1) continue;
+                    // skip if it is not the current priority
+                    // or if expression is inside the parentheses
+                    if (OperatorsLoader.getOperatorPriority(operatorName) != curPriority
+                            || parenthesesCount != 0) continue;
 
-                        // parse expression going before the operator
-                        Expression leftExpr = parseClearExpression(input.substring(0, start));
-                        // parse expression going after the operator
-                        Expression rightExpr = parseClearExpression(input.substring(curPos));
+                    Operator operator = OperatorsLoader.getOperator(operatorName);
 
-                        ArrayList<Expression> args = new ArrayList<>();
-                        if (leftExpr != null)  args.add(leftExpr);
-                        if (rightExpr != null) args.add(rightExpr);
+                    ArrayList<Expression> args = new ArrayList<>();
+                    // parse expression going before the operator
+                    if (operatorStart > 0)
+                        args.add(parseClearExpression(input.substring(0, operatorStart)));
+                    // parse expression going after the operator
+                    if (operatorEnd < input.length())
+                        args.add(parseClearExpression(input.substring(operatorEnd)));
 
-                        return operator.apply(args);
-                    }
+                    return operator.apply(args);
                 }
             }
             curPriority--;
         }
-        return null;
+        throw new BadSyntaxException("Parsing failed");
     }
 }

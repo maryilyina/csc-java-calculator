@@ -15,10 +15,13 @@ public final class CalculatorTests {
 
     @Test
     public void DoubleRepresentationTest() {
-        Assert.assertEquals(2, calculator.calculate("1 + 1"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
-        Assert.assertEquals(2, calculator.calculate("1+1"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
-        Assert.assertEquals(2, calculator.calculate("1.0+1"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
+        Assert.assertEquals(1, calculator.calculate("1"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
+        Assert.assertEquals(1, calculator.calculate("1.000"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
+        Assert.assertEquals(0.11, calculator.calculate("0000.11"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
+        Assert.assertEquals(1, calculator.calculate("01"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
+        Assert.assertEquals(0.1, calculator.calculate(".1"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
         Assert.assertEquals(1.11e-11, calculator.calculate("1.11e-11"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
+        Assert.assertEquals(1.21e-11, calculator.calculate("1e-12 + 1.11e-11"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
     }
 
     @Test
@@ -33,7 +36,7 @@ public final class CalculatorTests {
         Assert.assertEquals(10, calculator.calculate("6+4"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
         Assert.assertEquals(2, calculator.calculate("6-4"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
         Assert.assertEquals(12, calculator.calculate("6*2"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
-        Assert.assertEquals(6.5 / 31, calculator.calculate("6.5 / 31"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
+        Assert.assertEquals(-6.5 / 31, calculator.calculate("6.5 / (-31)"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
         Assert.assertEquals(216, calculator.calculate("6 ^ 3"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
         Assert.assertEquals(Math.sin(485), calculator.calculate("sin 485"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
         Assert.assertEquals(Math.cos(24), calculator.calculate("cos 24"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
@@ -78,4 +81,22 @@ public final class CalculatorTests {
         Assert.assertEquals(Math.cos(24), calculator.calculate("Cos 24"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
         Assert.assertEquals(Math.cos(24), calculator.calculate("COS 24"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
     }
+
+    @Test(expected = BadSyntaxException.class)
+    public void EmptyExpressionTest() { calculator.calculate(""); }
+
+    @Test(expected = BadSyntaxException.class)
+    public void OnlyBracesTest() { calculator.calculate("()()()"); }
+
+    @Test(expected = BadSyntaxException.class)
+    public void WrongBracesCountTest() { calculator.calculate("(((6)"); }
+
+    @Test(expected = BadSyntaxException.class)
+    public void UnknownOperatorCountTest() { calculator.calculate("unknown 15"); }
+
+    @Test(expected = BadSyntaxException.class)
+    public void NotEnoughArgsBinaryTest() { calculator.calculate("7 *"); }
+
+    @Test(expected = BadSyntaxException.class)
+    public void NotEnoughArgsUnaryTest() { calculator.calculate("abs"); }
 }
