@@ -19,18 +19,16 @@ public class OperatorsLoader {
         priority++;
     }
 
-    public static Integer maxPriority() {
+    public static Integer minPriority() {
         return priority - 1;
     }
 
     static {
         // priority 0
-        registerOperators(new UnaryMinusOperator());
-        // priority 1
         registerOperators(new PowerOperator(), new AbsOperator(), new SinOperator(), new CosOperator(), new SqrtOperator());
-        // priority 2
+        // priority 1
         registerOperators(new MultOperator(), new DivisionOperator());
-        // priority 3
+        // priority 2
         registerOperators(new AdditionOperator(), new SubstractionOperator());
     }
 
