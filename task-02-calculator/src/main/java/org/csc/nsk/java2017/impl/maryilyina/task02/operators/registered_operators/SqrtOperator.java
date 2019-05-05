@@ -12,7 +12,7 @@ public class SqrtOperator extends UnaryOperator {
     }
 
     @Override
-    public Double eval(Expression operand) {
+    public double eval(Expression operand) {
         return Math.sqrt(operand.eval());
     }
 }

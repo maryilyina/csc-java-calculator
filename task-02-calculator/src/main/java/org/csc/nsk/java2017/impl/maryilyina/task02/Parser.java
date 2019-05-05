@@ -2,6 +2,7 @@ package org.csc.nsk.java2017.impl.maryilyina.task02;
 
 import org.csc.nsk.java2017.impl.maryilyina.task02.expressions.*;
 import org.csc.nsk.java2017.impl.maryilyina.task02.operators.Operator;
+import org.csc.nsk.java2017.impl.maryilyina.task02.operators.registered_operators.UnaryMinusOperator;
 import org.csc.nsk.java2017.task02.BadSyntaxException;
 
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class Parser {
                 parenthesesCount--;
             if (parenthesesCount == 0) return input;
         }
-        return input.substring(1, input.length() - 1);
+        return clearEnclosingParentheses(input.substring(1, input.length() - 1));
     }
 
     public Expression parseExpression(String input) {
@@ -50,6 +51,9 @@ public class Parser {
         }
 
         int curPriority = OperatorsLoader.minPriority();
+        boolean hadUnarySign = false;
+        String unarySign = null;
+
         // go from lowest priority of operator to top to parse correctly
         while (curPriority >= 0) {
             int curPos = 0;
@@ -82,12 +86,14 @@ public class Parser {
 
                     String operatorName = input.substring(operatorStart, operatorEnd);
 
-                    // skip if unary minus
-                    // or if it is decimal mark '.'
-                    // or if it is exponential form 'e-'
-                    if (operatorName.equals("-") && operatorEnd == 1 ||
-                            operatorName.equals(".") ||
-                            operatorName.equals("e-"))
+                    // skip if it is unary minus or plus
+                    if ((operatorName.equals("-") || operatorName.equals("+") ) && operatorEnd == 1) {
+                        hadUnarySign = true;
+                        unarySign = operatorName;
+                        continue;
+                    }
+                    // skip if it is decimal mark or exponential form 'e-'
+                    if (operatorName.equals(".") || operatorName.equals("e-"))
                         continue;
 
                     if (!OperatorsLoader.contains(operatorName))
@@ -113,6 +119,16 @@ public class Parser {
             }
             curPriority--;
         }
+
+        // had only unary minus and no other operators in expression
+        if (hadUnarySign){
+            Expression expr = parseClearExpression(input.substring(1));
+            if (unarySign.equals("+"))
+                return expr;
+            else if (unarySign.equals("-"))
+                return new UnaryMinusOperator().apply(expr);
+        }
+
         throw new BadSyntaxException("Parsing failed");
     }
 }

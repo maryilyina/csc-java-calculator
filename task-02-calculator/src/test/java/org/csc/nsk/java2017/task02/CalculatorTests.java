@@ -45,24 +45,26 @@ public final class CalculatorTests {
 
     @Test
     public void ParenthesesTest() {
-        Assert.assertEquals(10, calculator.calculate("6+4"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
-        Assert.assertEquals(2, calculator.calculate("6-4"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
-        Assert.assertEquals(12, calculator.calculate("6*2"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
-        Assert.assertEquals(6.5 / 31, calculator.calculate("6.5 / 31"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
-        Assert.assertEquals(216, calculator.calculate("6 ^ 3"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
-        Assert.assertEquals(Math.sin(485), calculator.calculate("sin 485"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
-        Assert.assertEquals(Math.cos(24), calculator.calculate("cos 24"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
-        Assert.assertEquals(24, calculator.calculate("abs(-24)"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
+        Assert.assertEquals(2, calculator.calculate("(2)"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
+        Assert.assertEquals(2, calculator.calculate("(((2)))"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
+        Assert.assertEquals(30, calculator.calculate("((6+4)*3)"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
+        Assert.assertEquals(-9, calculator.calculate("(5-2)*(1-4)"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
+        Assert.assertEquals(1, calculator.calculate("3+(-2)"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
     }
 
     @Test
-    public void UnaryNumberSignTest() {
+    public void UnarySignTest() {
         Assert.assertEquals(2, calculator.calculate(" + 2"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
         Assert.assertEquals(-2, calculator.calculate(" -2"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
         Assert.assertEquals(48, calculator.calculate(" 45 + (- 2 + 5)"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
         Assert.assertEquals(-7, calculator.calculate(" - 2 - 5"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
         Assert.assertEquals(3, calculator.calculate(" - 2 -- 5"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
         Assert.assertEquals(-7, calculator.calculate(" - 2 +- 5"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
+        Assert.assertEquals(3, calculator.calculate(" -(-3)"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
+        Assert.assertEquals(-3, calculator.calculate(" -(+3)"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
+        Assert.assertEquals(-3, calculator.calculate(" +(-3)"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
+        Assert.assertEquals(2, calculator.calculate(" -(+3-5)"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
+        Assert.assertEquals(7, calculator.calculate(" -(-(3+2)) + 2"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
         Assert.assertEquals(3, calculator.calculate(" (- 2*(-1)*(-1)) - (-5)"), MathUtils.DEFAULT_DOUBLE_EQ_DELTA);
     }
 

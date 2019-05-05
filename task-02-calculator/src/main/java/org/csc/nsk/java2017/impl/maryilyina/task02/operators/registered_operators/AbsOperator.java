@@ -11,7 +11,7 @@ public class AbsOperator extends UnaryOperator {
     }
 
     @Override
-    public Double eval(Expression operand) {
+    public double eval(Expression operand) {
         Double res = operand.eval();
         if (res >= 0) return res;
         return -res;

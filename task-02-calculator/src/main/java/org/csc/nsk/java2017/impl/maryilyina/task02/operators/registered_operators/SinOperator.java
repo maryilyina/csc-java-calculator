@@ -11,7 +11,7 @@ public class SinOperator extends UnaryOperator {
     }
 
     @Override
-    public Double eval(Expression operand) {
+    public double eval(Expression operand) {
         return Math.sin(operand.eval());
     }
 }

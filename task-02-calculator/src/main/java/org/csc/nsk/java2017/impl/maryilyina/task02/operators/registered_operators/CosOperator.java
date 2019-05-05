@@ -11,7 +11,7 @@ public class CosOperator extends UnaryOperator {
     }
 
     @Override
-    public Double eval(Expression operand) {
+    public double eval(Expression operand) {
         return Math.cos(operand.eval());
     }
 }
